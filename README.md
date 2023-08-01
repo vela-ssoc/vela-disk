@@ -1,5 +1,5 @@
 # disk
-> vela ssoc disk api
+> vela ssoc disk  
 
 ## example
 ```lua

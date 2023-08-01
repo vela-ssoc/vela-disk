@@ -3,7 +3,7 @@ package disk
 import (
 	"fmt"
 	"github.com/shirou/gopsutil/disk"
-	"github.com/vela-ssoc/vela-kit/execpt"
+	"github.com/vela-ssoc/vela-kit/exception"
 	"time"
 )
 
@@ -13,13 +13,13 @@ type snapshot struct {
 }
 
 type summary struct {
-	fail *execpt.Cause
+	fail *exception.Cause
 	dev  []*Disk
 	snap snapshot
 }
 
 func New() *summary {
-	return &summary{fail: execpt.New()}
+	return &summary{fail: exception.New()}
 }
 
 func (sum *summary) partition() {
@@ -79,7 +79,7 @@ func (sum *summary) Update() {
 		return
 	}
 
-	sum.fail = execpt.New()
+	sum.fail = exception.New()
 	sum.snap.time = now
 	sum.partition()
 	sum.usage()
